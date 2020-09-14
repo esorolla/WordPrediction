@@ -1,5 +1,4 @@
 library(utils)
-setwd("C:/Work/Coursera/Data_Analysis/10)Capstone_Project/Week3")
 fileURL <- "https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip"
 fileZIP <- "Coursera-SwiftKey.zip"
 
@@ -29,7 +28,7 @@ close(fileBlogs)
 
 rm("fileTwitter", "fileNews", "fileBlogs")
 
-source("Scripts/clean2.R")
+source("clean2.R")
 ## We join the three datasets and sample 3% of the union
 set.seed(1234)
 files <- unlist(list(twitter,news,blogs))
@@ -38,10 +37,6 @@ smp2 <- clean2(smp)
 
 library(ngram)
 smp3 <- concatenate(smp2, collapse = "")
-
-write(smp, file = "cleanDataOriginal.txt")
-write(smp2, file = "cleanData.txt")
-
 
 bigram <- ngram(smp3, n = 2)
 bigram <- get.phrasetable(bigram)
@@ -54,10 +49,3 @@ trigram$ngrams <- trimws(trigram$ngrams, which = "both")
 fourgram <- ngram(smp3, n = 4)
 fourgram <- get.phrasetable(fourgram)
 fourgram$ngrams <- trimws(fourgram$ngrams, which = "both")
-
-setwd("C:/Work/Coursera/Data_Analysis/10)Capstone_Project/Week7/WordPred")
-library("readr")
-# Writing data to a txt file
-write.csv(bigram,"bigram.csv", row.names = FALSE)
-write.csv(trigram,"trigram.csv", row.names = FALSE)
-write.csv(fourgram,"fourgram.csv", row.names = FALSE)
