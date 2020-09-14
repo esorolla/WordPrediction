@@ -8,7 +8,7 @@ clean2 <- function(text) {
     text <- gsub("[[:digit:]]","", text)
     text <- gsub(" +", " ", text)
     text <- gsub("(f|ht)tp(s?)://(.*)[.][a-z]+", "", text)
-    text <- gsub("[`´]","'", text)
+    text <- gsub("[`Â´]","'", text)
     text <- gsub("'re", " are", text)
     text <- gsub("'ve", " have", text)
     text <- gsub("he's ", "he is ", text)
@@ -37,27 +37,7 @@ clean2 <- function(text) {
     text <- gsub("[^a-zA-Z]", " ", text)
     text <- gsub(" t ", "", text)
     text <- gsub(" s ", "", text)
-    #text <- str_split(text, " ")
 
-    # text <- str_replace_all(text,"#\\S+", " ")
-    # text <- str_replace_all(text,"(f|ht)tp(s?)://(.*)[.][a-z]+", " ")
-    # text <- str_replace_all(text,"\\.+", ". ")
-    # text <- str_replace_all(text,"\\?|\\!", ". ")
-    # if (!unigram) {
-    #     text <- str_replace_all(text,"[^a-zA-Z\\.\\,\\']", " ")
-    # } else {
-    #     text <- str_replace_all(text,"[^a-zA-Z\\.\\']", " ")
-    # }
-    # text <- str_replace_all(text,"\\ ' |\\' |\\ '", " ")
-    # text <- str_replace_all(text,"[\\s]+", " ")
-    # 
-    # text <- str_replace_all(text," s ", "'s ")
-    # text <- str_replace_all(text," t ", "'t ")
-    # text <- str_replace_all(text," u ", " you ")
-    # text <- str_replace_all(text," $|\\.$|\\. $", "")
-    # text <- str_replace_all(text,"\\. ", ".")
-    # text <- str_replace_all(text,"\\, ", ",")
-    #text <- str_split(text, "\\.|\\,")
     text <- unlist(text)
     return(text)
 }
